@@ -16,12 +16,12 @@ body {
   min-height: 50px;
   color: white;
   position: fixed;
-  width: 100%;
-  max-width: 728px;
-  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  max-width: 728px;
+  top: 0;
   z-index: 99;
   padding: 10px;
   box-sizing: border-box;
@@ -32,7 +32,7 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-  background-color: rgb(40, 37, 53);
+  background-color: rgb(122 122 122 / 83%);
 }
 
 main {
@@ -53,7 +53,7 @@ main::-webkit-scrollbar-track {
 }
 
 main::-webkit-scrollbar-thumb {
-  background: #6649b8;
+  background: #ebebedf0;
 }
 
 form {
@@ -69,7 +69,7 @@ form {
 
 form button {
   width: 20%;
-  background-color: rgb(56, 56, 143);
+  background-color: black;
 }
 
 
@@ -78,19 +78,17 @@ input {
   width: 100%;
   font-size: 1.5rem;
   background: rgb(58, 58, 58);
-  color: white;
+  color: rgb(250, 250, 250);
   outline: none;
   border: none;
   padding: 0 10px;
 }
 
 button {
-  /* background-color: #282c34; */
-  background-color: #981034ab;
+  background-color: #9a0f34ab;
   border: none;
   color: white;
   padding: 11px 26px;
-  /* padding: 15px 32px; */
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -182,3 +180,9 @@ img {
   height: 50px;
 }
 
+/* @media screen {
+  min-height: 177vh;
+  min-width: 78vh;
+  max-width: 839px;
+  app header max-width: 806px;
+} */

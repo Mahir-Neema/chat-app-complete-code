@@ -35,7 +35,6 @@ function App() {
   return (
     <div className="App">
       <header>
-      <h1>⚛️🔥</h1>
       <div className='Sign-out-btn'><SignOut /></div>
       </header>
       <section> { user ? <ChatRoom/> : <SignIn/> } </section>
@@ -53,7 +52,7 @@ function SignIn() {
   return (
     <>
       <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
-      <p>Do not violate the community guidelines or you will be banned for life!</p>
+      <p>Enjoy the new group chat app !</p>
       {/* <img className="img-logo"src="https://cdn.pixabay.com/photo/2015/11/04/18/33/paper-planes-1023097_960_720.png" alt="logo"/> */}
       <a className='github_link'  href="https://github.com/Mahir-Neema/chat-app-complete-code" target="blank"><img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894__340.png" alt="" /></a>
       <img className="img-logo"src="https://cdn.pixabay.com/photo/2020/02/19/07/16/paper-plane-4861531__340.png" alt="logo"/>
@@ -109,8 +108,7 @@ function ChatRoom() {
 
       <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="Say something Nice" />
 
-      <button type="submit" disabled={!formValue}>👉</button>
-      {/* ✅➡️ */}
+      <button type="submit" disabled={!formValue}>✅</button>
     </form>
   </>);
 }
@@ -123,7 +121,9 @@ function ChatMessage(props) {
 
   return (<>
     <div className={`message ${messageClass}`}>
-      <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} alt="pp" />
+      
+      {/* <img src={photoURL || 'https://cdn.pixabay.com/photo/2016/08/31/11/54/icon-1633249__340.png'} alt="pp" /> */}
+      <img src={uid ? photoURL : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/512px-Circle-icons-profile.svg.png"} alt="" />
       <p>{text}</p>
     </div>
   </>);
