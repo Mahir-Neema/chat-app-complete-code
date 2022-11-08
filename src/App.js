@@ -24,13 +24,16 @@ firebase.initializeApp({
   measurementId: "G-7LE655RWRE"
 })
 
+
+// referencing auth and firestore as global variable
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 const analytics = firebase.analytics();
 
 function App() {
 
-  const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth); // using useauth state hook
+  // if user is logged in it will return object else null
 
   return (
     <div className="App">
@@ -44,6 +47,8 @@ function App() {
 
 function SignIn() {
 
+  // initializing google auth provider
+  // pop up window for signin
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
@@ -70,20 +75,20 @@ function SignOut() {
 
 function ChatRoom() {
   const dummy = useRef();
-  const messagesRef = firestore.collection('messages');
+  const messagesRef = firestore.collection('messages'); // refrencing a firestore collection
   const query = messagesRef.orderBy('createdAt').limit(2005); // messages in the chat box limit = 45
 
-  const [messages] = useCollectionData(query, { idField: 'id' });
+  const [messages] = useCollectionData(query, { idField: 'id' }); // listening to data with a hook for updation
 
   const [formValue, setFormValue] = useState('');
 
 
   const sendMessage = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // to prevent page to refresh 
 
     const { uid, photoURL } = auth.currentUser;
 
-
+    // creating new document in the firestore
     await messagesRef.add({
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -91,8 +96,8 @@ function ChatRoom() {
       photoURL
     })
 
-    setFormValue('');
-    dummy.current.scrollIntoView({ behavior: 'smooth' });
+    setFormValue(''); // resettng our form value to empty string
+    dummy.current.scrollIntoView({ behavior: 'smooth' }); // for smooth down scrolling
   }
 
   return (<>
@@ -100,12 +105,14 @@ function ChatRoom() {
 
       {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
 
-      <span ref={dummy}></span>
+      <span ref={dummy}></span> 
+      {/* for automatic scroll */}
 
     </main>
 
     <form onSubmit={sendMessage}>
 
+      {/* // when ever user will type a message it trigger chnage effect */}
       <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="Say something Nice" />
 
       <button type="submit" disabled={!formValue}>✅</button>
